@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraNest.shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    .carousel-slide {
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide-wrapper {
+      min-width: 100%;
+      position: relative;
+      background: #fff5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-wrapper img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0.5rem;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #B22222;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+
+    .arrow-btn:hover {
+      background: #8b1a1a;
+    }
+
+    #prevBtn {
+      left: 1rem;
+    }
+
+    #nextBtn {
+      right: 1rem;
+    }
+
+    .arrow-svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      pointer-events: none;
+    }
+
+    /* Styles for the hero section text overlay - default (left aligned) */
+    .hero-content-overlay {
+      position: absolute;
+      top: 50%;
+      left: 5%; /* Adjusted for "slightly away from the left margin" */
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Align items to the start (left) */
+      gap: 10px; /* Space between text elements */
+      z-index: 10;
+      max-width: 90%; /* Ensure responsiveness */
+      text-align: left; /* Align text to the left within its container */
+      padding: 20px; /* Add some padding around the content for visual breathing room */
+    }
+
+    /* Specific styles for the second image's text overlay (centered and slightly down) */
+    .hero-content-overlay.center-top {
+      left: 50%;
+      transform: translateX(-50%); /* Center horizontally */
+      top: 5%; /* Moved slightly down from 0% */
+      padding-top: 0;
+      text-align: center;
+      align-items: center; /* Center items within the flex container */
+    }
+
+    .hero-organic {
+      color: #f95827;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+
+    .hero-main-title {
+      color: #333;
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+      text-transform: capitalize;
+    }
+
+    .hero-description {
+      color: #555; /* Medium gray */
+      font-size: 1rem; /* Regular font size */
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+      max-width: 350px; /* Limit width for readability */
+    }
+
+    .hero-button {
+      background-color: #f0f0f0; /* Light gray background */
+      color: #333; /* Dark gray text */
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #777; /* Darker border */
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 15px; /* Space above the button */
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      user-select: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-button:hover {
+      background-color: #e0e0e0;
+      border-color: #555;
+    }
+
+    /* Custom font for AuraNest */
+    .brand-name {
+        font-family: 'Dancing Script', cursive; /* Applied Dancing Script font */
+        font-weight: normal; /* Override font-extrabold as Dancing Script has its own style */
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      .hero-content-overlay {
+        left: 3%;
+        right: 3%;
+        transform: translateY(-50%);
+        text-align: center;
+        align-items: center; /* Center items for smaller screens */
+      }
+      .hero-content-overlay.center-top {
+        top: 8%; /* Adjusted for smaller screens too, slightly down */
+        padding-top: 0;
+        transform: translateX(-50%);
+      }
+      .hero-main-title {
+        font-size: 1.8rem;
+      }
+      .hero-description {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <nav class="flex items-center justify-between px-6 py-4 shadow-md bg-[#B22222]">
+    <div class="flex items-center space-x-3">
+      <img src="pictures/logo.jpg" alt="Logo" class="h-12 w-auto rounded-lg shadow-lg" />
+      <span class="text-2xl font-extrabold italic text-white tracking-wide select-none brand-name">AuraNest</span>
+    </div>
+
+    <div class="hidden md:flex space-x-6">
+      <a href="#" class="text-white hover:text-gray-200 font-medium">Home</a>
+      <a href="#" class="text-white hover:text-gray-200 font-medium">Shop</a>
+      <a href="#" class="text-white hover:text-gray-200 font-medium">Contact</a>
+      <a href="#" class="text-white hover:text-gray-200 font-medium">Blog</a>
+      <a href="#" class="text-white hover:text-gray-200 font-medium">About</a>
+    </div>
+
+    <div class="hidden md:flex space-x-4">
+      <button class="text-white font-medium hover:underline">Login</button>
+      <button class="bg-white text-[#B22222] px-4 py-2 rounded hover:bg-gray-200 transition font-medium">
+        Sign Up
+      </button>
+    </div>
+
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-white focus:outline-none" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 bg-white shadow">
+    <a href="#" class="block text-[#B22222] hover:text-red-700 font-medium">Home</a>
+    <a href="#" class="block text-[#B22222] hover:text-red-700 font-medium">Shop</a>
+    <a href="#" class="block text-[#B22222] hover:text-red-700 font-medium">Contact</a>
+    <a href="#" class="block text-[#B22222] hover:text-red-700 font-medium">Blog</a>
+    <a href="#" class="block text-[#B22222] hover:text-red-700 font-medium">About</a>
+    <div class="pt-4 border-t">
+      <a href="#" class="block text-[#B22222] hover:underline font-medium">Login</a>
+      <a href="#" class="block text-center bg-[#B22222] text-white py-2 mt-2 rounded hover:bg-red-900 transition">Sign Up</a>
+    </div>
+  </div>
+
+  <section class="relative w-full max-w-screen-xl mx-auto mt-6 overflow-hidden rounded shadow-lg">
+    <div class="flex transition-transform duration-500 ease-in-out" id="carousel">
+      <div class="slide-wrapper">
+        <img src="pictures/hero-1.jpg" alt="Offer 1" />
+        <div class="hero-content-overlay">
+          <span class="hero-organic">Limited Time Offer</span>
+          <h1 class="hero-main-title">
+            Buy Above ₹2000<br />Get ₹500 Worth of<br />Products Free!
+          </h1>
+          <p class="hero-description">
+            Discover amazing deals and get more for your money with our special offer!
+          </p>
+          <button class="hero-button">Discover More</button>
+        </div>
+      </div>
+
+      <div class="slide-wrapper">
+        <img src="pictures/hero-2.jpeg" alt="Offer 2" />
+        <div class="hero-content-overlay center-top">
+          <span class="hero-organic">Exclusive Deal</span>
+          <h1 class="hero-main-title">
+            Flat 20% Off<br />On ₹5000 Spend!
+          </h1>
+          <p class="hero-description">
+            Unlock incredible savings on your next purchase. Limited time offer!
+          </p>
+          <button class="hero-button">Shop Now</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="prevBtn" class="arrow-btn" aria-label="Previous Slide">
+      <svg class="arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+    <button id="nextBtn" class="arrow-btn" aria-label="Next Slide">
+      <svg class="arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 6l6 6-6 6" />
+      </svg>
+    </button>
+  </section>
+
+  <section class="container mx-auto px-4 py-8 mt-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Shop by Category</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\moisturizer-1.jpg" alt="Moisturizer" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Moisturizer</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\sunscreen-2.webp" alt="Sunscreen" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Sunscreen</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\primer-1.webp" alt="Primer" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Primer</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\foundation-2.png" alt="Foundation" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Foundation</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\serum-5.jpg" alt="Serum" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Serum</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\concealer-3.webp" alt="Concealer" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Concealer</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\lipstick-1.jpg" alt="Lip Stick" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Lip Stick</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures\lipbalm-1.jpg" alt="Lip Balm" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Lip Balm</h3>
+        </div>
+      </a>
+      <a href="#" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+        <img src="pictures/category-sports.jpg" alt="Lip Tint" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 text-center bg-red-100">
+          <h3 class="text-xl font-semibold text-gray-800">Lip Tint</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % 2;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + 2) % 2;
+      updateCarousel();
+    });
+
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+    }
+  </script>
+
+</body>
+</html>
