@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - AuraNest.shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    .brand-name {
+      font-family: 'Dancing Script', cursive;
+      font-weight: normal;
+    }
+    
+    .blog-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <nav class="flex items-center justify-between px-6 py-4 shadow-md bg-[#B22222]">
+    <div class="flex items-center space-x-3">
+      <img src="pictures/logo.jpg" alt="Logo" class="h-12 w-auto rounded-lg shadow-lg" />
+      <span class="text-2xl font-extrabold italic text-white tracking-wide select-none brand-name">AuraNest</span>
+    </div>
+
+    <div class="hidden md:flex space-x-6">
+      <a href="index.html" class="text-white hover:text-gray-200 font-medium">Home</a>
+      <a href="shop.html" class="text-white hover:text-gray-200 font-medium">Shop</a>
+      <a href="contact.html" class="text-white hover:text-gray-200 font-medium">Contact</a>
+      <a href="blog.html" class="text-white hover:text-gray-200 font-medium border-b-2 border-white">Blog</a>
+      <a href="about.html" class="text-white hover:text-gray-200 font-medium">About</a>
+    </div>
+
+    <div class="hidden md:flex space-x-4">
+      <button class="text-white font-medium hover:underline">Login</button>
+      <button class="bg-white text-[#B22222] px-4 py-2 rounded hover:bg-gray-200 transition font-medium">
+        Sign Up
+      </button>
+    </div>
+
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-white focus:outline-none" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 bg-white shadow">
+    <a href="index.html" class="block text-[#B22222] hover:text-red-700 font-medium">Home</a>
+    <a href="shop.html" class="block text-[#B22222] hover:text-red-700 font-medium">Shop</a>
+    <a href="contact.html" class="block text-[#B22222] hover:text-red-700 font-medium">Contact</a>
+    <a href="blog.html" class="block text-[#B22222] hover:text-red-700 font-medium font-bold">Blog</a>
+    <a href="about.html" class="block text-[#B22222] hover:text-red-700 font-medium">About</a>
+    <div class="pt-4 border-t">
+      <a href="#" class="block text-[#B22222] hover:underline font-medium">Login</a>
+      <a href="#" class="block text-center bg-[#B22222] text-white py-2 mt-2 rounded hover:bg-red-900 transition">Sign Up</a>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-8">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">Beauty & Skincare Blog</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">Discover the latest tips, trends, and expert advice for your beauty routine</p>
+    </div>
+
+    <!-- Featured Article -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg" alt="Featured Article" class="w-full h-64 object-cover">
+        <div class="p-8">
+          <span class="text-[#B22222] text-sm font-semibold">FEATURED</span>
+          <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">The Ultimate Guide to Building Your Perfect Skincare Routine</h2>
+          <p class="text-gray-600 mb-4">Discover how to create a personalized skincare routine that works for your unique skin type and concerns. From cleansing to moisturizing, we cover everything you need to know.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 15, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg" alt="Sunscreen Tips" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">SKINCARE</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">5 Sunscreen Mistakes You're Probably Making</h3>
+          <p class="text-gray-600 mb-4">Learn about the most common sunscreen application errors and how to protect your skin properly.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 12, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg" alt="Makeup Trends" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">MAKEUP</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">2025 Makeup Trends You Need to Try</h3>
+          <p class="text-gray-600 mb-4">From bold lips to natural glows, discover the hottest makeup trends taking over this year.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 10, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3762882/pexels-photo-3762882.jpeg" alt="Serum Guide" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">SKINCARE</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">The Complete Guide to Face Serums</h3>
+          <p class="text-gray-600 mb-4">Everything you need to know about incorporating serums into your skincare routine for maximum benefits.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 8, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3373745/pexels-photo-3373745.jpeg" alt="Foundation Tips" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">MAKEUP</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">How to Choose the Perfect Foundation Shade</h3>
+          <p class="text-gray-600 mb-4">Master the art of finding your perfect foundation match with our expert tips and tricks.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 5, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3762873/pexels-photo-3762873.jpeg" alt="Moisturizer Guide" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">SKINCARE</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">Winter Moisturizing: Keep Your Skin Hydrated</h3>
+          <p class="text-gray-600 mb-4">Combat dry winter skin with the right moisturizing techniques and products for your skin type.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 3, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://images.pexels.com/photos/3373748/pexels-photo-3373748.jpeg" alt="Lip Care" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-[#B22222] text-sm font-semibold">LIP CARE</span>
+          <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">Essential Lip Care for Every Season</h3>
+          <p class="text-gray-600 mb-4">Keep your lips soft, smooth, and healthy year-round with our comprehensive lip care guide.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-sm">January 1, 2025</span>
+            <a href="#" class="text-[#B22222] font-semibold hover:underline">Read More</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="bg-[#B22222] text-white rounded-lg p-8 mt-12 text-center">
+      <h3 class="text-2xl font-bold mb-4">Stay Updated with Beauty Tips</h3>
+      <p class="mb-6">Subscribe to our newsletter for the latest beauty trends, product reviews, and exclusive tips.</p>
+      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded text-gray-800">
+        <button class="bg-white text-[#B22222] px-6 py-2 rounded font-semibold hover:bg-gray-100 transition">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-gray-800 text-white py-8 mt-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <img src="pictures/logo.jpg" alt="Logo" class="h-10 w-auto rounded-lg" />
+            <span class="text-xl font-bold brand-name">AuraNest</span>
+          </div>
+          <p class="text-gray-400">Your trusted partner for premium beauty and skincare products.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="shop.html" class="text-gray-400 hover:text-white">Shop</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Categories</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Skincare</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Makeup</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Lip Care</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Sun Protection</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact Info</h4>
+          <p class="text-gray-400 mb-2">Email: info@auranest.shop</p>
+          <p class="text-gray-400 mb-2">Phone: +91 12345 67890</p>
+          <p class="text-gray-400">Address: Mumbai, India</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2025 AuraNest.shop. All rights reserved. | Privacy Policy | Terms of Service</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
