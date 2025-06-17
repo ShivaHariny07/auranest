@@ -186,11 +186,12 @@
       <a href="blog.html" class="text-white hover:text-gray-200 font-medium">Blog</a>
       <a href="about.html" class="text-white hover:text-gray-200 font-medium">About</a>
     </div>
+    
     <div class="hidden md:flex space-x-4 items-center">
       <button id="cart-btn" class="text-white font-medium hover:underline relative">
         Cart (<span id="cart-count">0</span>)
       </button>
-    <div class="hidden md:flex space-x-4">
+      
       <button class="text-white font-medium hover:underline">Login</button>
       <button class="bg-white text-[#B22222] px-4 py-2 rounded hover:bg-gray-200 transition font-medium">
         Sign Up
@@ -364,25 +365,52 @@
     </div>
   </footer>
 
+  <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-lg max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Shopping Cart</h3>
+          <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="cart-items" class="space-y-4 mb-4">
+          </div>
+        <div class="border-t pt-4">
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-bold">Total: ₹<span id="cart-total">0</span></span>
+          </div>
+          <button class="w-full bg-[#B22222] text-white py-2 rounded hover:bg-red-700 transition">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
+    // Carousel functionality
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     let currentIndex = 0;
 
     nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % 2;
+      currentIndex = (currentIndex + 1) % 2; // Assuming 2 slides
       updateCarousel();
     });
 
     prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + 2) % 2;
+      currentIndex = (currentIndex - 1 + 2) % 2; // Assuming 2 slides
       updateCarousel();
     });
 
@@ -391,6 +419,8 @@
       carousel.style.transform = `translateX(${offset}%)`;
     }
   </script>
+  <script src="js/shop.js"></script>
+  <script src="js/cart.js"></script>
 
 </body>
 </html>
